@@ -1,0 +1,26 @@
+<template id="tpl-hello-world">
+  <div>
+    <p>Hello-world</p>
+  </div>
+  <style>
+    p {
+      padding: 5px 10px;
+      background-color: antiquewhite;
+    }
+  </style>
+</template>
+
+<script>
+  class HelloWorld extends HTMLElement {
+    constructor() {
+      super();
+      const el = document
+        .querySelector(`#tpl-hello-world`)
+        .content.cloneNode(true);
+      this.attachShadow({ mode: "open" }).appendChild(el);
+    }
+  }
+
+  customElements.define("hello-world", HelloWorld);
+  console.log("injected <hello-world>");
+</script>

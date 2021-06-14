@@ -1,0 +1,26 @@
+<template id="tpl-second-component">
+  <div>
+    <p>Second-component</p>
+  </div>
+  <style>
+    p {
+      padding: 5px 10px;
+      background-color: aliceblue;
+    }
+  </style>
+</template>
+
+<script>
+  class SecondComponent extends HTMLElement {
+    constructor() {
+      super();
+      const el = document
+        .querySelector(`#tpl-second-component`)
+        .content.cloneNode(true);
+      this.attachShadow({ mode: "open" }).appendChild(el);
+    }
+  }
+
+  customElements.define("second-component", SecondComponent);
+  console.log("injected <second-component>");
+</script>
