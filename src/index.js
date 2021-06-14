@@ -1,3 +1,4 @@
+const config = window.config;
 const loadedTags = [];
 
 const makeContainer = (target) => {
@@ -53,9 +54,9 @@ const parseElement = async (tagName, el, path, container) => {
 };
 
 const getPath = (tagName) => {
-  const pathsDict = window.config?.chips?.paths;
-  const pathDefault = window.config?.chips?.path;
-  return (pathsDict && pathsDict[tagName]) || pathDefault || "/components";
+  const pathsDict = (config && config.chips && config.chips.paths) || {};
+  const pathDefault = config && config.chips && config.chips.path;
+  return pathsDict[tagName] || pathDefault || "/components";
 };
 
 const monitorElements = (container) => (mutationList) => {
@@ -104,4 +105,4 @@ const chips = ({ target = "_chips" } = {}) => {
   return { loadedTags };
 };
 
-chips(window.config?.chips);
+chips(config && config.chips);
