@@ -1,0 +1,8 @@
+.idea/
+.nyc_output/
+.vscode/
+alt-components/
+components/
+coverage/
+index.html
+node_modules/
