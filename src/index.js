@@ -1,5 +1,5 @@
-const config = window.config
-const loadedTags = []
+const config = this ? this.config : {}
+let loadedTags = []
 
 const makeContainer = (target) => {
   const newContainer = document.createElement('div')
@@ -32,7 +32,7 @@ const injectMarkUp = (markUp) => {
 }
 
 const activateScripts = (fragment) => {
-  if (!fragment) return
+  if (!fragment) return null
   fragment.querySelectorAll('script').forEach((script) => {
     const newScriptElement = document.createElement('script')
     if (script.getAttribute('type') === 'module') {
@@ -101,3 +101,23 @@ const chips = ({ target = '_chips' } = {}) => {
 }
 
 chips(config && config.chips)
+
+// For testing purposes
+
+const reset = ({ config: configArg, loadedTags: loadedTagsArg = [] } = {}) => {
+  // config = {}
+  loadedTags = loadedTagsArg
+}
+
+export {
+  reset,
+  makeContainer,
+  isNewCustomTag,
+  fetchMarkUp,
+  injectMarkUp,
+  activateScripts,
+  parseElement,
+  getPath,
+  monitorElements,
+  chips
+}
