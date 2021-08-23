@@ -4,7 +4,7 @@
   "description": "A lean web component loader.",
   "main": "lib/index.js",
   "scripts": {
-    "build": "npm run babel ./src -d ./lib",
+    "build": "npx babel ./src -d ./lib",
     "lint": "eslint ./src --fix",
     "test": "jest --collect-coverage",
     "prepublishOnly": "npm run build"
@@ -24,9 +24,10 @@
   },
   "homepage": "https://github.com/isacvale/chips#readme",
   "devDependencies": {
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
     "@babel/preset-env": "^7.15.0",
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.7.0",
     "eslint": "^7.28.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.23.4",
