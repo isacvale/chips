@@ -48,6 +48,10 @@ const activateScripts = (fragment) => {
 const parseElement = async (tagName, el, path, container) => {
   loadedTags.push(tagName);
   const markUp = await fetchMarkUp(tagName, path);
+  if (!markUp) {
+    console.warn(tagName, "is blank.");
+    return;
+  }
   const fragment = injectMarkUp(markUp);
   activateScripts(fragment);
   fragment && container.append(fragment);
