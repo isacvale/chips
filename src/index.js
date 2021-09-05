@@ -1,5 +1,5 @@
 const config = this ? this.config : {};
-let loadedTags = [];
+const loadedTags = [];
 
 const makeContainer = (target) => {
   const newContainer = document.createElement("div");
@@ -46,6 +46,7 @@ const activateScripts = (fragment) => {
 };
 
 const parseElement = async (tagName, el, path, container) => {
+  if (!isNewCustomTag(tagName)) return;
   loadedTags.push(tagName);
   const markUp = await fetchMarkUp(tagName, path);
   const fragment = injectMarkUp(markUp);
