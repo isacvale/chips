@@ -1,0 +1,29 @@
+<template id="tpl-test-three">
+  <div>
+    <p>test-three</p>
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+  class TestThree extends HTMLElement {
+    constructor() {
+      super();
+      const el = document
+        .querySelector(`#tpl-test-three`)
+        .content.cloneNode(true);
+      this.attachShadow({ mode: "open" }).appendChild(el);
+    }
+
+    connectedCallback() {
+      const createElement = () => {
+        console.log("create Element");
+        const elFour = document.createElement("test-four");
+        this.shadowRoot.querySelector("div").appendChild(elFour);
+      };
+      setTimeout(createElement, 5000);
+    }
+  }
+
+  customElements.define("test-three", TestThree);
+</script>

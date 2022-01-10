@@ -1,0 +1,20 @@
+<template id="tpl-test-six">
+  <div>
+    <p>test-six</p>
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+  class TestSix extends HTMLElement {
+    constructor() {
+      super();
+      const el = document
+        .querySelector(`#tpl-test-six`)
+        .content.cloneNode(true);
+      this.attachShadow({ mode: "open" }).appendChild(el);
+    }
+  }
+
+  customElements.define("test-six", TestSix);
+</script>

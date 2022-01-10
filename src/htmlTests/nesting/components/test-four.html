@@ -1,0 +1,20 @@
+<template id="tpl-test-four">
+  <div>
+    <p>test-four</p>
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+  class TestFour extends HTMLElement {
+    constructor() {
+      super();
+      const el = document
+        .querySelector(`#tpl-test-four`)
+        .content.cloneNode(true);
+      this.attachShadow({ mode: "open" }).appendChild(el);
+    }
+  }
+
+  customElements.define("test-four", TestFour);
+</script>
